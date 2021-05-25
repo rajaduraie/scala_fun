@@ -176,27 +176,13 @@ object List {
   def main(args: Array[String]): Unit = {
     val lst = List(1,3,5,7,9,2,4,6,8)
     val ls = List(10,11,12,13,14)
-    println("Sum of list elements " + sum(lst))
     assert(sum(lst) == 45) //println("Sum of list elements " + sum(lst))
-    println("Product of list elements "+ product(lst))
-    println("Tail of list elements "+ tail(lst))
-    println("setHead to 10 for list " + setHead(10, lst))
-    println("drop 2 elements from list " + drop(2, lst))
-    println("dropWhile element is less than 5 " + dropWhile(lst, (x: Int) => x < 5))
-    println("Add List ls with lst " + addLists(lst, ls))
-    println("Init List is " + init(lst))
-    println("Reverse List is " + reverse(lst))
-    println("foldRight List add is " + foldRight(lst, 0)( (x: Int, y: Int) => x + y))
-    println("foldRight List multiply is " + foldRight(lst, 1)( (x: Int, y: Int) => x * y))
-    println("FoldRight calculate number of elements " + foldRight(lst, 0)( (x, y) => y + 1))
-    println("FoldLeft calculate number of elements " + foldLeft(lst, 0)( (x, y) => y + 1))
-    println("FoldLeft calculate sum of elements " + foldLeft(lst, 0)( (x, y) => x + y))
-    println("FoldLeft calculate product of elements " + foldLeft(lst, 1.0)( (x, y) => x * y))
-    println("FoldLeft same list " + reverse(foldLeft(lst, Nil: List[Int])((x, y) => Cons(y, x))))
-    // 3.13 - append with fold left
-    println("FoldLeft append " + reverse(foldLeft(lst, List(15))( (x, y) => Cons(y, x))))
-    println("FoldLeft calculate product of elements " + foldLeft(lst, 1.0)( (x, y) => x * y))
-
+    assert(product(lst) == 362880) //println("Sum of list elements " + sum(lst))
+    assert(foldRight(lst, 0)( (x: Int, y: Int) => x + y) == 45 )
+    assert(foldRight(lst, 1)( (x: Int, y: Int) => x * y) == 362880 )
+    assert(foldLeft(lst, 0)( (x: Int, y: Int) => y + 1) == 9 )
+    assert(foldLeft(lst, 0)( (x: Int, y: Int) => x + y) == 45 )
+    assert(foldLeft(lst, 1)( (x: Int, y: Int) => x * y) == 362880 )
   }
   
 }
